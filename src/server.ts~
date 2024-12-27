@@ -20,8 +20,13 @@ app.listen(PORT, () => {
 
 app.get('/health', (req: Request, res: Response) => {
   return res.status(200).send({
-    status: 'Oks',
+    status: 'Okss',
     uptime: process.uptime(),
     date: new Date()
   })
 })
+
+// Import routes
+import Jobs from './routes/Jobs'
+
+app.use('/jobs', Jobs)

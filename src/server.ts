@@ -25,3 +25,9 @@ app.get('/health', (req: Request, res: Response) => {
     date: new Date()
   })
 })
+
+// Import routes
+import Jobs from './routes/Jobs'
+
+// Define server routes
+app.use('/jobs', Jobs)
