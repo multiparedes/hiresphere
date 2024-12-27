@@ -1,0 +1,11 @@
+{
+  "name": "hire-shpere",
+  "version": "1.0.0",
+  "description": "HireSphere connects employers and job seekers, enabling job postings, applications, and hiring management in a simple, efficient API.",
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Multiparedes",
+  "license": "ISC"
+}
