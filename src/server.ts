@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
 import 'dotenv/config'
 
 // Env file variables
@@ -9,10 +9,10 @@ const app = express()
 app.use(express.json())
 
 app.listen(PORT, () => {
-  console.log(`Server started on port 8080`)
+  console.log(`Server started on port ${PORT}`)
 })
 
-app.get('/health', (req, res) => {
+app.get('/health', (req: Request, res: Response) => {
   return res.status(200).send({
     status: 'Ok',
     uptime: process.uptime(),
