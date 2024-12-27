@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  postgresdb:
+    image: postgres:15
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_PASSWORD=$DB_PASSWORD
+      - POSTGRES_DB=$DB_NAME
+    ports:
+      - $POSTGRES_PORT:$POSTGRES_PORT
+    networks:
+      - back-tier
+
+  app:
+    depends_on:
+      - postgresdb
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: hiresphere-api
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $LOCAL_PORT:$LOCAL_PORT
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command:
+      sh -c "/app/wait-for-it.sh postgresdb:POSTGRES_PORT -- npm run prisma:migrate && /app/node_modules/.bin/tsx watch src/server.ts"
+    networks:
+      - back-tier
+
+networks:
+  back-tier:
+    driver: bridge
