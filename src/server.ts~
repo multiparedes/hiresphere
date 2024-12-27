@@ -20,7 +20,7 @@ app.listen(PORT, () => {
 
 app.get('/health', (req: Request, res: Response) => {
   return res.status(200).send({
-    status: 'Okss',
+    status: 'Oks',
     uptime: process.uptime(),
     date: new Date()
   })

@@ -35,6 +35,7 @@ out/
 
 # Git-specific files
 *.lock
+*.yaml.*
 *.patch
 *.rej
 *.orig
