@@ -1,6 +1,5 @@
 import { Request, Response } from 'express'
 import { prisma } from '../db'
-import { matchedData } from 'express-validator'
 
 const getAllJobsGuest = async (req: Request, res: Response) => {
   try {
@@ -14,7 +13,7 @@ const getAllJobsGuest = async (req: Request, res: Response) => {
 const postJob = async (req: Request, res: Response) => {
   try {
     const job = await prisma.job.create({
-      ...matchedData(req)
+      ...req.body
     })
 
     return res.status(201).send(job)
