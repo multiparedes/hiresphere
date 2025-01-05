@@ -1,9 +1,10 @@
 import { Router } from 'express'
 import { getAllJobsGuest, postJob } from '../controllers/Jobs'
 import { postJobSchema } from '../validations/Jobs'
+import { validate } from '../validations/common'
 
 const router = Router()
 
 export default router
   .get('/', getAllJobsGuest)
-  .post('/', postJobSchema, postJob)
+  .post('/', postJobSchema, validate, postJob)

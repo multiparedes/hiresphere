@@ -32,7 +32,7 @@ services:
       - /app/node_modules
     command:
       sh -c "/app/wait-for-it.sh postgresdb:POSTGRES_PORT -- npm run prisma:migrate &&
-      /app/node_modules/.bin/nodemon --legacy-watch "
+      /app/node_modules/.bin/nodemon --legacy-watch"
     networks:
       - back-tier
 

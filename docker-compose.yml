@@ -33,6 +33,12 @@ services:
     command:
       sh -c "/app/wait-for-it.sh postgresdb:POSTGRES_PORT -- npm run prisma:migrate &&
       /app/node_modules/.bin/nodemon --legacy-watch"
+    healthcheck:
+      test: curl --fail http://app:8000/health || exit 1
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
     networks:
       - back-tier
 

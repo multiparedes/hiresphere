@@ -78,7 +78,7 @@ model Applications {
   applicantId String
 
   appliedTo Task @relation(fields: [taskId], references: [id])
-  taskId    Int
+  taskId  Int
 }
 
 enum ApplicationStatus {

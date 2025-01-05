@@ -10,8 +10,7 @@ export default [
   ...tseslint.configs.recommended,
   {
     rules: {
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
-      'no-warning-comments': ['off']
+      'no-console': ['warn', { allow: ['warn', 'error'] }]
     }
   }
 ]
