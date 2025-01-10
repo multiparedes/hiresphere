@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "npx prisma:migrate && npm run dev"]
+CMD ["sh", "-c", "npm run dev"]
