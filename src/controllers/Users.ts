@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express'
 import { prisma } from '../utils/db'
+import { hashPassword } from '../utils/passwordsManagment'
 
 async function getAllUsers(req: Request, res: Response) {
   const users = await prisma.user.findMany({
@@ -21,7 +22,7 @@ async function postEmployee(req: Request, res: Response) {
           create: {
             name,
             email,
-            password,
+            password: await hashPassword(password),
             type: 'Employee'
           }
         }
@@ -49,7 +50,7 @@ async function postApplicant(req: Request, res: Response) {
           create: {
             name,
             email,
-            password,
+            password: await hashPassword(password),
             type: 'Applicant'
           }
         }

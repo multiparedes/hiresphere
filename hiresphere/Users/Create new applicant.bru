@@ -1,0 +1,20 @@
+meta {
+  name: Create new applicant
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "test@mail.co",
+    "password": "pass1234",
+    "name": "John Dow",
+    "resume": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  }
+}
