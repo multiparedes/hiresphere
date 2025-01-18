@@ -1,8 +1,8 @@
-import { hash, compare } from 'bcrypt'
+import { hashSync, compareSync } from 'bcrypt'
 
-async function hashPassword(password: string): Promise<string> {
+function hashPassword(password: string): string {
   try {
-    return await hash(password, 10)
+    return hashSync(password, 10)
   } catch (err) {
     console.error('Error during password hashing. ', err)
     throw err
@@ -11,7 +11,7 @@ async function hashPassword(password: string): Promise<string> {
 
 async function checkPassword(password: string, hash: string): Promise<boolean> {
   try {
-    return await compare(password, hash)
+    return compareSync(password, hash)
   } catch (err) {
     console.error('Error during password hashing. ', err)
     throw err

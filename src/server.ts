@@ -29,6 +29,8 @@ app.get('/health', (req: Request, res: Response) => {
 
 // Import routes
 import Users from './routes/Users'
+import Auth from './routes/Auth'
 
 // Define server routes
 app.use('/users', Users)
+app.use('/auth', Auth)
